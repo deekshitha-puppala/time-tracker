@@ -1,20 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>training.taylor.time-tracker</groupId>
     <artifactId>time-tracker-parent</artifactId>
     <packaging>pom</packaging>
     <version>0.5.0-SNAPSHOT</version>
-
     <name>Time Tracker (Parent)</name>
-
     <description>
         This is a simple Maven / Java web project.
     </description>
-
     <inceptionYear>2017</inceptionYear>
     <url>http://taylor.training/</url>
 
@@ -22,12 +16,9 @@
         <spring.version>5.0.2.RELEASE</spring.version>
         <java.version>1.8</java.version>
         <junit.version>4.12</junit.version>
-
-        <!-- Versions -->
         <findbugs.version>3.0.5</findbugs.version>
         <pmd.version>3.8</pmd.version>
         <checkstyle.version>2.17</checkstyle.version>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -36,10 +27,7 @@
         <module>web</module>
     </modules>
 
-    <!-- BUILD SECTION -->
     <build>
-
-        <!-- Existing pluginManagement (unchanged) -->
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -53,19 +41,16 @@
                         <target>${java.version}</target>
                     </configuration>
                 </plugin>
-
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>findbugs-maven-plugin</artifactId>
                     <version>${findbugs.version}</version>
                 </plugin>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-pmd-plugin</artifactId>
                     <version>${pmd.version}</version>
                 </plugin>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
@@ -73,72 +58,8 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-
-        <!-- ⭐ ADDED: ACTUAL EXECUTIONS THAT GENERATE XML REPORTS ⭐ -->
-        <plugins>
-
-            <!-- CHECKSTYLE -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${checkstyle.version}</version>
-                <executions>
-                    <execution>
-                        <id>run-checkstyle</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>checkstyle</goal>
-                        </goals>
-                        <configuration>
-                            <outputFile>${project.build.directory}/checkstyle-result.xml</outputFile>
-                            <outputFileFormat>xml</outputFileFormat>
-                            <failsOnError>false</failsOnError>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- PMD -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>${pmd.version}</version>
-                <executions>
-                    <execution>
-                        <id>run-pmd</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>pmd</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- FINDBUGS -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>${findbugs.version}</version>
-                <executions>
-                    <execution>
-                        <id>run-findbugs</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>findbugs</goal>
-                        </goals>
-                        <configuration>
-                            <xmlOutput>true</xmlOutput>
-                            <failOnError>false</failOnError>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-        </plugins>
-
     </build>
 
-    <!-- REPORTING (Kept same) -->
     <reporting>
         <plugins>
             <plugin>
@@ -150,7 +71,6 @@
                     <xmlOutput>true</xmlOutput>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
@@ -163,12 +83,10 @@
                     </reportSet>
                 </reportSets>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
             </plugin>
         </plugins>
     </reporting>
-
 </project>
